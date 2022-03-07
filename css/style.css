@@ -45,3 +45,7 @@ body{
     display: table;
     clear: both;
 }
+
+.bombs{
+    background-color: red;
+}
