@@ -16,6 +16,8 @@ const playButton = document.querySelector('#play-button');
 
 let  gridWrapper = document.getElementById('grid-wrapper');
 
+let score = 0;
+
 const bombs = [];
 console.log(bombs)
 
@@ -34,12 +36,14 @@ playButton.addEventListener('click', function(){
                 if (!bombs.includes(i)){
                     addedBox.classList.add('clicked');
                     addedBox.classList.add('text-white');
+                    score++;
+                    scoreUpdate('score', `Il tuo punteggio è: ${score}`)
                 } else {
                     addedBox.classList.add('bombs')
+                    scoreUpdate('score', `MI dispiace hai perso! Il tuo punteggio è: ${score}`)
                     
                 }
                 
-
             })
         }
     } else if (selectItem() == 'medio'){
@@ -48,8 +52,17 @@ playButton.addEventListener('click', function(){
             gridWrapper.appendChild(addedBox);
             addedBox.innerHTML = +i;
             addedBox.addEventListener('click', function (){
-                addedBox.classList.add('clicked');
-                addedBox.classList.add('text-white');
+                if (!bombs.includes(i)){
+                    addedBox.classList.add('clicked');
+                    addedBox.classList.add('text-white');
+                    score++;
+                    scoreUpdate('score', `Il tuo punteggio è: ${score}`)
+                } else {
+                    addedBox.classList.add('bombs')
+                    scoreUpdate('score', `MI dispiace hai perso! Il tuo punteggio è: ${score}`)
+
+                    
+                }
 
             })
         }
@@ -59,36 +72,38 @@ playButton.addEventListener('click', function(){
             gridWrapper.appendChild(addedBox);
             addedBox.innerHTML = +i;
             addedBox.addEventListener('click', function (){
-                addedBox.classList.add('clicked');
-                addedBox.classList.add('text-white');
+                if (!bombs.includes(i)){
+                    addedBox.classList.add('clicked');
+                    addedBox.classList.add('text-white');
+                    score++;
+                    scoreUpdate('score', `Il tuo punteggio è: ${score}`)
+                } else {
+                    addedBox.classList.add('bombs')
+                    scoreUpdate('score', `MI dispiace hai perso! Il tuo punteggio è: ${score}`)
+                    
+                }
             })
         }
     }
 })
 
-// Il computer deve generare 16 numeri casuali nello stesso range della difficoltà prescelta: le bombe. I numeri nella lista delle bombe non possono essere duplicati.
-
-
 
 function generateUniqueRandomNumber( blackList, min, max){
-    // mi creo una variabile inizializzata a false, che mi controlla se ho generato un numero
-    // valido oppure no
+    
     let check = false;
     let randomInt;
 
-    // creo un ciclo che continua finché non ho trovato un numero valido (assente in blacklist)
     while ( !check ){
-        //  genero randomicamente un numero intero tra il min e il max passati come argomenti
+
         randomInt  = randomInteger(min, max);
-        // se il numero non è presente nella blacklist allora
+
         if ( !blackList.includes(randomInt)  ){
-            // informo il resto della funzione che il numero è stato trovato ed è valido
-            // ==> esco dal ciclo while
+
             check = true;
         }
     }
 
-    // restituisco il numero valido che ho trovato
+
     return randomInt;
 }
 
@@ -102,9 +117,7 @@ function randomInteger(minimumValue, maximumValue){
     return ( Math.floor(Math.random() * ((maximumValue + 1) - minimumValue) + minimumValue));
 }
 
-// In seguito l'utente clicca su una cella: se il numero è presente nella lista dei numeri generati
-// - abbiamo calpestato una bomba
-// - la cella si colora di rosso e la partita termina, altrimenti la cella cliccata si colora di azzurro e l'utente può continuare a cliccare sulle altre celle.
-// La partita termina quando il giocatore clicca su una bomba o raggiunge il numero massimo possibile di numeri consentiti.
-// Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l’utente ha cliccato su una cella che non era una b.
 
+function scoreUpdate (elementId, addingScore){
+    document.getElementById(elementId).innerHTML = addingScore; 
+}
