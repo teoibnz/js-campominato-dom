@@ -1,16 +1,4 @@
 
-function selectItem (){
-    let selectItem = document.getElementById('level-select');
-    return (selectItem.value);
-}
-
-function createNewSquare (){
-    let newBox = document.createElement('div');
-    newBox.classList.add('grid-easy-square');
-    return newBox;
-}
-
-
 
 const playButton = document.querySelector('#play-button');
 
@@ -19,11 +7,21 @@ let  gridWrapper = document.getElementById('grid-wrapper');
 let score = 0;
 
 const bombs = [];
-console.log(bombs)
+const mediumBombs = [];
+const hardBombs = [];
 
 for ( let i = 1; i <= 16; i++){
         bombs.push(generateUniqueRandomNumber( bombs, 1,101));
     } 
+
+for ( let i = 1; i <= 16; i++){
+    mediumBombs.push(generateUniqueRandomNumber( bombs, 1,80));
+} console.log(mediumBombs)
+
+for ( let i = 1; i <= 16; i++){
+    hardBombs.push(generateUniqueRandomNumber( bombs, 1,50));
+} 
+
 
 playButton.addEventListener('click', function(){
     if (selectItem() == 'facile'){
@@ -52,7 +50,7 @@ playButton.addEventListener('click', function(){
             gridWrapper.appendChild(addedBox);
             addedBox.innerHTML = +i;
             addedBox.addEventListener('click', function (){
-                if (!bombs.includes(i)){
+                if (!mediumBombs.includes(i)){
                     addedBox.classList.add('clicked');
                     addedBox.classList.add('text-white');
                     score++;
@@ -72,7 +70,7 @@ playButton.addEventListener('click', function(){
             gridWrapper.appendChild(addedBox);
             addedBox.innerHTML = +i;
             addedBox.addEventListener('click', function (){
-                if (!bombs.includes(i)){
+                if (!HardBombs.includes(i)){
                     addedBox.classList.add('clicked');
                     addedBox.classList.add('text-white');
                     score++;
@@ -88,6 +86,17 @@ playButton.addEventListener('click', function(){
 })
 
 
+function selectItem (){
+    let selectItem = document.getElementById('level-select');
+    return (selectItem.value);
+}
+
+function createNewSquare (){
+    let newBox = document.createElement('div');
+    newBox.classList.add('grid-easy-square');
+    return newBox;
+}
+
 function generateUniqueRandomNumber( blackList, min, max){
     
     let check = false;
@@ -102,12 +111,8 @@ function generateUniqueRandomNumber( blackList, min, max){
             check = true;
         }
     }
-
-
     return randomInt;
 }
-
-
 
 function randomInteger(minimumValue, maximumValue){
     if ( isNaN(parseInt(minimumValue)) || isNaN(parseInt(maximumValue)) ){
