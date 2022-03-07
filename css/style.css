@@ -1,0 +1,47 @@
+
+
+body{
+    background-color: #7fffd4;
+}
+
+#grid-wrapper{
+    height: 600px;
+    width: 600px;
+}
+.grid-easy-square,
+.grid-medium-square,
+.grid-hard-square{
+    border: 3px solid white;
+    
+}
+
+
+.grid-easy-square{
+    width: calc(100% / 10);
+    height: calc(100% / 10);
+    float: left;
+    color: grey;
+    text-align: center;
+    line-height: 60px;
+    
+}
+
+.grid-medium-square{
+    width: calc(100% / 9);
+    height: calc(100% / 9);
+}
+
+.grid-hard-square{
+    width: calc(100% / 7);
+    height: calc(100% / 7);
+}
+
+.clicked{
+    background-color: #6495ed;
+}
+
+.clearfix::after{
+    content: "";
+    display: table;
+    clear: both;
+}

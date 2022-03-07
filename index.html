@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- fontawesom -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!--Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <title>CAMPOMINATO GRIP</title>
+</head>
+<body>
+    <main>
+        <header>
+            <nav class="navbar navbar-light bg-light px-5">
+                <div class="container">
+                    <a class="navbar-brand fw-bold fs-3" href="#">
+                    Campo Minato
+                    </a>
+                </div>
+                <span class="mx-2">Scegli il livello di difficoltà</span>
+                <select name="scegli la difficoltà" id="level-select">
+                    <option id="easy" value="facile">FACILE</option>
+                    <option id="medium" value="medio">MEDIO</option>
+                    <option id="hard" value="difficile">DIFFICILE</option>
+                </select>
+                <button id="play-button" class="btn btn-warning mx-2">PLAY</button>
+                </nav>
+                
+        </header>
+        <div class = "container d-flex justify-content-center my-5">
+            <div class="row">
+                <div id="grid-wrapper" class="col-12 .clearfix">
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    <script src="main.js"></script>
+</body>
+</html>
