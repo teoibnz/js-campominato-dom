@@ -22,8 +22,9 @@ for ( let i = 1; i <= 16; i++){
     hardBombs.push(generateUniqueRandomNumber( bombs, 1,50));
 } 
 
-
+let isGameOver = true;
 playButton.addEventListener('click', function(){
+    isGameOver = false
     if (selectItem() == 'facile'){
         for (let i = 1; i < 101; i++) {
             const addedBox = createNewSquare();
@@ -31,6 +32,7 @@ playButton.addEventListener('click', function(){
             addedBox.innerHTML = +i;
 
             addedBox.addEventListener('click', function (){
+                
                 if (!bombs.includes(i)){
                     addedBox.classList.add('clicked');
                     addedBox.classList.add('text-white');
@@ -45,6 +47,10 @@ playButton.addEventListener('click', function(){
             })
         }
     } else if (selectItem() == 'medio'){
+        isGameOver = true;
+                    if (isGameOver = true){
+                        gridWrapper.innerHTML = '';
+                    }
         for (let i = 1; i < 81; i++) {
             const addedBox = createNewSquare();
             gridWrapper.appendChild(addedBox);
@@ -58,19 +64,22 @@ playButton.addEventListener('click', function(){
                 } else {
                     addedBox.classList.add('bombs')
                     scoreUpdate('score', `MI dispiace hai perso! Il tuo punteggio è: ${score}`)
-
+                    
                     
                 }
-
             })
-        }
+        } 
     } else {
+        isGameOver = true;
+                    if (isGameOver = true){
+                        gridWrapper.innerHTML = '';
+                    }
         for (let i = 1; i < 51; i++) {
             const addedBox = createNewSquare();
             gridWrapper.appendChild(addedBox);
             addedBox.innerHTML = +i;
             addedBox.addEventListener('click', function (){
-                if (!HardBombs.includes(i)){
+                if (!hardBombs.includes(i)){
                     addedBox.classList.add('clicked');
                     addedBox.classList.add('text-white');
                     score++;
@@ -82,7 +91,7 @@ playButton.addEventListener('click', function(){
                 }
             })
         }
-    }
+    } 
 })
 
 
